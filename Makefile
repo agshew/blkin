@@ -36,7 +36,7 @@ DLIBPP=libzipkin-cpp
 DLIBFRONT=libblkin-front
 
 LIB_DIR=$(shell pwd)
-prefix= /usr/local
+prefix ?= /usr/local
 libdir= $(prefix)/lib
 incdir= $(prefix)/include
 
@@ -104,16 +104,16 @@ run_ppp:
 run: run_c run_pp
 
 install:
-	install -m 644 $(DLIBPP).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
+	install -m 0755 $(DLIBPP).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIBPP).$(MAJOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIBPP).so $(DESTDIR)/$(libdir)
-	install -m 644  $(DLIB).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
+	install -m 0755  $(DLIB).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIB).$(MAJOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIB).so $(DESTDIR)/$(libdir)
-	install -m 644 $(DLIBFRONT).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
+	install -m 0755 $(DLIBFRONT).$(MAJOR).$(MINOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIBFRONT).$(MAJOR).so $(DESTDIR)/$(libdir)
 	cp -P $(DLIBFRONT).so $(DESTDIR)/$(libdir)
-	install -m 644 $(H_FILES) $(DESTDIR)/$(incdir)
+	install -m 0755 $(H_FILES) $(DESTDIR)/$(incdir)
 
 clean:
 	rm -f *.o *.so test testpp testppp
